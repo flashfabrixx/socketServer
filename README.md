@@ -1,7 +1,7 @@
 socketServer
 ============
 
-Meteor Server with UI and API to be used by [client app](https://github.com/flashfabrixx/socketClient).
+Example Meteor Server with UI and API to be used by [client app](https://github.com/flashfabrixx/socketClient).
 
 ======================
 #### Installation
