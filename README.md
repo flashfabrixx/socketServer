@@ -33,7 +33,6 @@ Open the webapp at [http://localhost:3000](http://localhost:3000) and run the iO
 - Offline storage with Core Data and synchronisation
 
 ======================
-#### Licensing  
+#### Licensing
+
 MIT License.
-=======
-Meteor Server to be used with matching client.
