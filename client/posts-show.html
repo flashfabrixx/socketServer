@@ -1,0 +1,90 @@
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Posts</h1>
+        </div>
+        <div style="float: right;">
+            <button type="button" class="btn btn-primary" aria-expanded="false" id="new-post-btn">
+                Create new post
+            </button>
+        </div>
+        {{> postsList }}
+    </div>
+    {{> postEditModal}}
+</body>
+
+<template name="postsList">
+    <div class="table table-striped">
+        <table class="table table-default">
+            <thead>
+            <tr>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Message</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each posts}}
+                    {{> post}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="post">
+    <tr>
+        <td style="width: 200px;">{{formatFullDate createdAt}}</td>
+        <td style="width: 200px;">{{formatFullDate updatedAt}}</td>
+        <td style="width: 400px;">{{message}}</td>
+        <td style="text-align: right;">
+            <a href="">
+                <button type="button" class="btn btn-default btn-sm" id="edit-post-btn" data-toggle="modal" data-target="#edit-post-modal" data-value="{{_id}}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </button>
+            </a>
+            <a href="">
+                <button type="button" class="btn btn-danger btn-sm" id="delete-post-btn">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+            </a>
+        </td>
+    </tr>
+</template>
+
+<template name="postEditModal">
+    <div class="modal fade" id="edit-post-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    {{#if post}}
+                        <h4 class="modal-title">Edit Post</h4>
+                    {{else}}
+                        <h4 class="modal-title">New Post</h4>
+                    {{/if}}
+                </div>
+                <div class="modal-body">
+                    {{#if post}}
+                        <p>Update the message of this post and save your changes.</p>
+                    {{else}}
+                        <p>Create the message of this post and save your changes.</p>
+                    {{/if}}
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="messageInput" placeholder="Enter Your Message" value="{{post.message}}">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submit-modal-btn">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
+
