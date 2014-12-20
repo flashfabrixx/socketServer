@@ -8,4 +8,7 @@ insecure
 less
 nemo64:bootstrap
 mrt:moment
+accounts-base
+accounts-password
+iron:router
 
